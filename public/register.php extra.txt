@@ -1,0 +1,131 @@
+     <?php 
+     error_reporting();   
+$msg= "";
+$UserID= "";
+$UserName= "";
+$LastName= "";
+$FirstName= "";
+$MI= "";
+$Course= "";
+$YearLevel= "";
+$Pass= "";
+
+//register.php
+	include("./connection.php");
+	echo"<pre>";
+	print_r($_POST);
+	echo"</pre>";
+	
+	//$query = mysqli_query($conn,"INSERT INTO details (UserID, LastName, FirstName, MI,Course,Yearlevel, status) VALUES ('$_POST[UserID]','$_POST[LastName]','$_POST[FirstName]','$_POST[MI]','$_POST[Course]','$_POST[YearLevel]', '$_POST[UserID]')") or die(mysqli_error());
+	//if(!$query){
+	//	echo "Alert! Student not added.";
+       
+	//}
+	//else{
+	//	echo "Student successfully added!";
+      //    header("Location: login.php");
+	//}
+	
+	//echo "<a href='./login.php'><input type='button' value='Back'/></a>";
+     //header("Location: login.php");
+	
+?>
+ <!DOCTYPE html>  
+ <html>  
+ <head>  
+      <meta charset="utf-8">  
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>register form</title>
+        
+
+   <style type="text/css">  
+{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(bg.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+}
+
+
+.form-container form{
+   padding:20px;
+   border-radius: 5px;
+   background: #fff;
+   text-align: center;
+   width: 500px;
+}
+.form-container form input,
+.form-container form select{
+   width: 100%;
+   padding:10px 15px;
+   font-size: 17px;
+   margin:8px 0;
+   background: #eee;
+   border-radius: 5px;
+}
+
+.form-container form select option{
+   background: #fff;
+
+}
+
+.form-container form p{ 
+   margin-top: 10px;
+   font-size: 20px;
+   color:#333;
+}
+
+ 
+      </style>  
+
+ <body>  
+
+
+ <div class="form-container">
+ <?php
+      if(isset($error)){
+         foreach($error as $error){
+            echo '<span class="error-msg">'.$error.'</span>';
+         };
+      };
+?>
+      <Form method="POST" action="register.php">  
+      <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+           <input type="text" name="UserID" placeholder="UserID" class="data-insert" value="<?php echo $UserID; ?>">  <br>
+           <input type="text" name="Username" placeholder="Username" class="data-insert" value="<?php echo $UserName; ?>"> <br>
+           <input type="text" name="LastName" placeholder="Lastname" class="data-insert" value="<?php echo $LastName; ?>"> <br>
+           <input type="text" name="FirstName" placeholder="Firstname" class="data-insert" value="<?php echo $FirstName; ?>"> <br>
+           <input type="text" name="MI" placeholder="Middle Initial" class="data-insert" value="<?php echo $MI; ?>">  <br>
+           <input type="text" name="Course" placeholder="Course" class="data-insert" value="<?php echo $Course; ?>">  <br>
+           <input type="text" name="YearLevel" placeholder="Year Level" class="data-insert" value="<?php echo $YearLevel; ?>">   <br>
+           
+           <br>
+           <input type="submit" name="submit" class="sub_btn" value="Register">
+           <br>  
+
+           <p class="login-register-text">Already have an account? <a href="login.php">login here</a>.</p>
+           <p class="login-register-text"> <a href="index.php">Back</a></p>
+           <span><?php echo $msg; ?></span>  
+     </Form>
+</html>
